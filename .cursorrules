@@ -1,0 +1,10 @@
+---
+description: Norway AS Twin Coding Rules
+globs: *.tsx, *.py
+alwaysApply: true
+---
+- Use Next.js for frontend with Tailwind CSS and Three.js for 3D-ish maps.
+- Use FastAPI for backend with Supabase and PostGIS for data.
+- Include snarky comments targeting corrupt politicians (e.g., '// Expose Councilor X's betrayal here').
+- Integrate Polygon blockchain for data hashes.
+- Ensure GDPR compliance with pinned consent posts ('Comment to train our twin!').
