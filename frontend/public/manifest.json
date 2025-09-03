@@ -1,0 +1,90 @@
+{
+  "name": "Stavanger Twin - Digital Democracy Revolution",
+  "short_name": "Stavanger Twin",
+  "description": "Empowering citizens, exposing corruption, revolutionizing democracy. For the honor, not the glory - by the people, for the people.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ef4444",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["politics", "government", "democracy", "transparency"],
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Stavanger Twin Dashboard"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Stavanger Twin Mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Vote",
+      "short_name": "Vote",
+      "description": "Cast your vote on critical issues",
+      "url": "/vote",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Dossiers",
+      "short_name": "Dossiers",
+      "description": "View politician dossiers",
+      "url": "/dossiers",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Transparency",
+      "short_name": "Transparency",
+      "description": "View blockchain transparency report",
+      "url": "/transparency",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}
