@@ -1,9 +1,10 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Text, Box } from '@react-three/drei';
 import * as THREE from 'three';
+import { AlertTriangle, MapPin, Users, Shield } from 'lucide-react';
 
 // Stavanger neighborhood data with vote sentiment
 interface NeighborhoodData {
@@ -97,7 +98,40 @@ function NeighborhoodBlock({ data, onClick }: { data: NeighborhoodData; onClick:
   );
 }
 
-// Main map component
+// Loading fallback component
+function MapLoadingFallback() {
+  return (
+    <div className="w-full h-96 bg-corruption-800 rounded-lg flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-8 h-8 border-2 border-truth-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p className="text-corruption-300">Loading Stavanger's democratic pulse...</p>
+      </div>
+    </div>
+  );
+}
+
+// Error boundary component
+function MapErrorFallback({ error, retry }: { error: Error; retry: () => void }) {
+  return (
+    <div className="w-full h-96 bg-corruption-800 rounded-lg flex items-center justify-center">
+      <div className="text-center max-w-md">
+        <AlertTriangle className="w-12 h-12 text-rebel-400 mx-auto mb-4" />
+        <h3 className="text-lg font-bold text-rebel-300 mb-2">Map Loading Failed</h3>
+        <p className="text-corruption-300 mb-4">
+          The 3D map couldn't load. This might be due to browser compatibility or network issues.
+        </p>
+        <button
+          onClick={retry}
+          className="bg-truth-500 hover:bg-truth-600 text-white px-4 py-2 rounded transition-colors"
+        >
+          Retry Loading Map
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// Main map component with error handling
 export default function StavangerMap() {
   const [selectedNeighborhood, setSelectedNeighborhood] = useState<NeighborhoodData | null>(null);
   const [mapStats, setMapStats] = useState({
@@ -105,9 +139,16 @@ export default function StavangerMap() {
     averageSentiment: 0,
     corruptionHotspots: 0
   });
+  const [hasError, setHasError] = useState(false);
+  const [isWebGLSupported, setIsWebGLSupported] = useState(true);
 
-  // Calculate map statistics
+  // Check WebGL support and calculate map statistics
   useEffect(() => {
+    // Check WebGL support for older browsers
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    setIsWebGLSupported(!!gl);
+
     const totalVotes = stavangerNeighborhoods.reduce((sum, n) => sum + n.votePercentage, 0);
     const averageSentiment = totalVotes / stavangerNeighborhoods.length;
     const corruptionHotspots = stavangerNeighborhoods.filter(n => n.corruptionLevel > 5).length;
@@ -123,8 +164,53 @@ export default function StavangerMap() {
     setSelectedNeighborhood(data);
   };
 
+  const retryMap = () => {
+    setHasError(false);
+    setIsWebGLSupported(true);
+  };
+
+  // Show error fallback if WebGL is not supported or there's an error
+  if (hasError) {
+    return <MapErrorFallback error={new Error('Map failed to load')} retry={retryMap} />;
+  }
+
+  if (!isWebGLSupported) {
+    return (
+      <div className="w-full h-96 bg-corruption-800 rounded-lg flex items-center justify-center">
+        <div className="text-center max-w-md">
+          <MapPin className="w-12 h-12 text-corruption-500 mx-auto mb-4" />
+          <h3 className="text-lg font-bold text-corruption-300 mb-2">2D Map View</h3>
+          <p className="text-corruption-400 mb-4">
+            Your browser doesn't support 3D graphics. Here's a simplified view of Stavanger's democratic pulse.
+          </p>
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            {stavangerNeighborhoods.map((neighborhood) => (
+              <div
+                key={neighborhood.id}
+                className="bg-corruption-700 rounded p-3 cursor-pointer hover:bg-corruption-600 transition-colors"
+                onClick={() => handleNeighborhoodClick(neighborhood)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleNeighborhoodClick(neighborhood)}
+                aria-label={`View details for ${neighborhood.name} neighborhood`}
+              >
+                <div className="font-semibold text-truth-300">{neighborhood.name}</div>
+                <div className="text-corruption-300">{neighborhood.votePercentage}% votes</div>
+                <div className={`text-xs ${
+                  neighborhood.corruptionLevel > 5 ? 'text-rebel-300' : 'text-people-300'
+                }`}>
+                  Corruption: {neighborhood.corruptionLevel}/10
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full h-96 relative">
+    <div className="w-full h-96 relative" role="img" aria-label="Interactive 3D map of Stavanger neighborhoods showing voting sentiment and corruption levels">
       {/* Map Statistics Overlay */}
       <div className="absolute top-4 left-4 z-10 bg-corruption-800/90 backdrop-blur-sm rounded-lg p-4 text-sm">
         <div className="space-y-2">
@@ -152,7 +238,7 @@ export default function StavangerMap() {
             <span>Positive Sentiment</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-f59e0b rounded"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded"></div>
             <span>Negative Sentiment</span>
           </div>
           <div className="flex items-center gap-2">
@@ -162,29 +248,43 @@ export default function StavangerMap() {
         </div>
       </div>
 
-      {/* 3D Map Canvas */}
-      <Canvas camera={{ position: [8, 8, 8], fov: 50 }}>
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
-        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#0ea5e9" />
-        
-        {/* Render neighborhood blocks */}
-        {stavangerNeighborhoods.map((neighborhood) => (
-          <NeighborhoodBlock
-            key={neighborhood.id}
-            data={neighborhood}
-            onClick={handleNeighborhoodClick}
+      {/* 3D Map Canvas with Suspense and error handling */}
+      <Suspense fallback={<MapLoadingFallback />}>
+        <Canvas 
+          camera={{ position: [8, 8, 8], fov: 50 }}
+          onError={() => setHasError(true)}
+          style={{ background: 'transparent' }}
+        >
+          <ambientLight intensity={0.4} />
+          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <pointLight position={[-10, -10, -5]} intensity={0.5} color="#0ea5e9" />
+          
+          {/* Render neighborhood blocks */}
+          {stavangerNeighborhoods.map((neighborhood) => (
+            <NeighborhoodBlock
+              key={neighborhood.id}
+              data={neighborhood}
+              onClick={handleNeighborhoodClick}
+            />
+          ))}
+          
+          {/* Ground plane */}
+          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
+            <planeGeometry args={[20, 20]} />
+            <meshStandardMaterial color="#1e293b" transparent opacity={0.3} />
+          </mesh>
+          
+          <OrbitControls 
+            enablePan={true} 
+            enableZoom={true} 
+            enableRotate={true}
+            minDistance={5}
+            maxDistance={20}
+            enableDamping={true}
+            dampingFactor={0.05}
           />
-        ))}
-        
-        {/* Ground plane */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
-          <planeGeometry args={[20, 20]} />
-          <meshStandardMaterial color="#1e293b" transparent opacity={0.3} />
-        </mesh>
-        
-        <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-      </Canvas>
+        </Canvas>
+      </Suspense>
 
       {/* Neighborhood Details Panel */}
       {selectedNeighborhood && (

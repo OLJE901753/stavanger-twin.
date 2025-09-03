@@ -173,25 +173,30 @@ export default function VotePage() {
     <div className="min-h-screen bg-corruption-900 text-foreground py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight"
           >
             <span className="text-rebel-500">PEOPLE'S</span>{' '}
             <span className="text-truth-400">VOTE</span>
           </motion.h1>
-          <p className="text-xl text-corruption-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-corruption-300 max-w-3xl mx-auto px-4">
             Your voice matters. Cast your vote on critical issues affecting Stavanger. 
-            Every vote is blockchain-verified and immutable.
+            Every vote is blockchain-verified and immutable. <span className="text-rebel-400 font-semibold">Make the politicians listen!</span>
           </p>
         </div>
 
         {/* User Stats */}
-        <div className="bg-corruption-800 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold text-truth-400 mb-4">Your Voting Power</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="bg-corruption-800 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-bold text-truth-400 mb-4">
+            Your Voting Power
+            <div className="text-sm text-corruption-400 font-normal">
+              Every vote is a rebellion against the status quo!
+            </div>
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
               <div className="text-2xl font-bold text-people-300">{userStats.totalVotes}</div>
               <div className="text-sm text-corruption-400">Total Votes</div>
@@ -211,10 +216,15 @@ export default function VotePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Active Votes List */}
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-truth-400 mb-6">Active Votes</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-truth-400 mb-4 sm:mb-6">
+              Active Votes
+              <div className="text-sm text-corruption-400 font-normal">
+                Choose your battles. Every vote counts in the revolution!
+              </div>
+            </h2>
             <div className="space-y-4">
               {activeVotes.map((vote) => (
                 <motion.div
@@ -290,6 +300,9 @@ export default function VotePage() {
               <div className="bg-corruption-800 rounded-lg p-6 sticky top-8">
                 <h3 className="text-xl font-bold text-truth-400 mb-4">
                   Cast Your Vote
+                  <div className="text-sm text-corruption-400 font-normal">
+                    Strike back against corruption with your voice!
+                  </div>
                 </h3>
                 
                 {!voteSubmitted ? (
@@ -340,12 +353,20 @@ export default function VotePage() {
                       </motion.button>
                     ))}
 
-                    {/* hCaptcha */}
+                    {/* hCaptcha - Troll-resistant voting protection */}
                     {selectedOption && (
                       <div className="mt-4">
+                        <div className="mb-2 text-xs text-corruption-400">
+                          <Shield className="inline w-3 h-3 mr-1" />
+                          Anti-bot protection for democratic integrity
+                        </div>
                         <HCaptcha
-                          sitekey="your-hcaptcha-site-key"
+                          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || "10000000-ffff-ffff-ffff-000000000001"}
                           onVerify={handleCaptchaVerify}
+                          onError={(error) => console.error('hCaptcha error:', error)}
+                          onExpire={() => setCaptchaToken(null)}
+                          theme="dark"
+                          size="normal"
                         />
                       </div>
                     )}
@@ -386,7 +407,8 @@ export default function VotePage() {
                       Vote Submitted!
                     </h4>
                     <p className="text-sm text-corruption-300 mb-4">
-                      Your vote has been recorded on the blockchain and is immutable.
+                      Your vote has been recorded on the blockchain and is immutable. 
+                      <span className="text-rebel-400 font-semibold">The establishment can't ignore this!</span>
                     </p>
                     <div className="bg-corruption-700 rounded-lg p-3 text-xs text-corruption-400">
                       <div className="flex items-center gap-2 mb-1">

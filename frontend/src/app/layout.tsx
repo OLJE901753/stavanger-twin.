@@ -4,18 +4,21 @@ import "./globals.css";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import Navigation from "@/components/Navigation";
 import GDPRConsentBanner from "@/components/GDPRConsentBanner";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 // Anti-establishment fonts for the people
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
+  preload: false, // Only preload the primary font
 });
 
 export const metadata: Metadata = {
@@ -23,7 +26,6 @@ export const metadata: Metadata = {
   description: "Empowering citizens, exposing corruption, revolutionizing democracy. For the honor, not the glory - by the people, for the people.",
   keywords: ["democracy", "transparency", "Stavanger", "Norway", "digital twin", "citizen empowerment"],
   authors: [{ name: "Norway AS Twin Team" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "Stavanger Twin - Digital Democracy Revolution",
@@ -38,6 +40,12 @@ export const metadata: Metadata = {
   },
 };
 
+// Separate viewport export for Next.js 15 compatibility
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,13 +57,12 @@ export default function RootLayout({
         {/* GDPR Compliance - Minimal tracking */}
         <meta name="robots" content="index, follow" />
         <meta name="theme-color" content="#0a0a0a" />
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Anti-establishment theme for the people */}
       </head>
-                        <body
-                    className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-corruption-900 text-foreground min-h-screen`}
-                  >
-                    <ServiceWorkerRegistration />
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-corruption-900 text-foreground min-h-screen flex flex-col`}
+      >
+        <ServiceWorkerRegistration />
         
         {/* People's Pulse Ticker - Always visible */}
         <div className="fixed top-0 left-0 right-0 z-50 bg-rebel-500 text-white text-sm py-1 px-4 overflow-hidden">
@@ -67,12 +74,14 @@ export default function RootLayout({
         </div>
         
         {/* Main content with top padding for ticker */}
-        <div className="pt-8">
-          <Navigation />
-          {children}
+        <div className="pt-8 flex-1">
+          <ErrorBoundary>
+            <Navigation />
+            {children}
+          </ErrorBoundary>
         </div>
         
-                {/* Footer with People's Oath */}
+        {/* Footer with People's Oath */}
         <footer className="bg-corruption-800 text-corruption-200 py-4 px-4 mt-auto">
           <div className="max-w-7xl mx-auto text-center">
             <p className="text-sm">

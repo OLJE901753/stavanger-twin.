@@ -20,7 +20,7 @@ const pulseData: PulseItem[] = [
     id: '1',
     type: 'vote',
     title: '82% voted NO on parking fees',
-    description: 'Councilor X ignored overwhelming public opposition',
+    description: 'Councilor X ignored overwhelming public opposition - but we caught them red-handed!',
     timestamp: '2 hours ago',
     impact: 'high',
     verified: true
@@ -29,7 +29,7 @@ const pulseData: PulseItem[] = [
     id: '2',
     type: 'corruption',
     title: 'Budget transparency violation exposed',
-    description: '€2.3M allocated without public consultation',
+    description: '€2.3M allocated without public consultation - the people demand answers!',
     timestamp: '5 hours ago',
     impact: 'high',
     verified: true
@@ -38,7 +38,7 @@ const pulseData: PulseItem[] = [
     id: '3',
     type: 'transparency',
     title: 'Blockchain verification: 1,247 votes',
-    description: 'All votes cryptographically verified on Polygon',
+    description: 'All votes cryptographically verified on Polygon - corruption-proof democracy!',
     timestamp: '1 day ago',
     impact: 'medium',
     verified: true
@@ -47,7 +47,7 @@ const pulseData: PulseItem[] = [
     id: '4',
     type: 'achievement',
     title: 'NGO partnership established',
-    description: 'Local civic groups join transparency initiative',
+    description: 'Local civic groups join transparency initiative - united against corruption!',
     timestamp: '2 days ago',
     impact: 'medium',
     verified: true
@@ -56,7 +56,7 @@ const pulseData: PulseItem[] = [
     id: '5',
     type: 'vote',
     title: 'New policy proposal: Green energy',
-    description: 'Citizens can now vote on renewable energy projects',
+    description: 'Citizens can now vote on renewable energy projects - power to the people!',
     timestamp: '3 days ago',
     impact: 'low',
     verified: true
@@ -115,6 +115,9 @@ export default function PeoplePulse() {
         <h3 className="text-lg font-bold text-truth-400 flex items-center gap-2">
           <div className="w-2 h-2 bg-truth-400 rounded-full animate-pulse"></div>
           People's Pulse
+          <span className="text-xs text-corruption-400 font-normal ml-2">
+            - The establishment's worst nightmare!
+          </span>
         </h3>
         <div className="text-xs text-corruption-400">
           {currentIndex + 1} of {pulseData.length}

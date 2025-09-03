@@ -55,27 +55,27 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="text-rebel-500">STAVANGER</span>{' '}
               <span className="text-truth-400">TWIN</span>
             </h1>
-            <p className="text-xl md:text-2xl text-corruption-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-corruption-300 mb-8 max-w-3xl mx-auto px-4">
               Digital democracy revolution. Empowering citizens, exposing corruption, 
-              revolutionizing governance.
+              revolutionizing governance. <span className="text-rebel-400 font-semibold">The establishment can't hide anymore!</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Link
                 href="/vote"
-                className="bg-rebel-500 hover:bg-rebel-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 rebel-pulse"
+                className="bg-rebel-500 hover:bg-rebel-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 rebel-pulse text-sm sm:text-base"
               >
-                <Vote className="inline-block mr-2" size={20} />
+                <Vote className="inline-block mr-2" size={18} />
                 Cast Your Vote
               </Link>
               <Link
                 href="/dossiers"
-                className="bg-truth-500 hover:bg-truth-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+                className="bg-truth-500 hover:bg-truth-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base"
               >
-                <Eye className="inline-block mr-2" size={20} />
+                <Eye className="inline-block mr-2" size={18} />
                 Expose Corruption
               </Link>
             </div>
@@ -84,19 +84,22 @@ export default function Home() {
       </section>
 
       {/* Live Stats Dashboard */}
-      <section className="py-16 bg-corruption-800">
+      <section className="py-8 sm:py-12 lg:py-16 bg-corruption-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12 text-people-400">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-people-400">
             People's Power in Real-Time
+            <div className="text-sm sm:text-base text-corruption-400 font-normal mt-2">
+              Watch the establishment squirm as transparency wins!
+            </div>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="bg-corruption-700 p-6 rounded-lg text-center people-glow"
+              className="bg-corruption-700 p-4 sm:p-6 rounded-lg text-center people-glow"
             >
-              <Users className="mx-auto mb-3 text-people-400" size={32} />
-              <div className="text-2xl font-bold text-people-300">{stats.totalVotes.toLocaleString()}</div>
-              <div className="text-sm text-corruption-300">Votes Cast</div>
+              <Users className="mx-auto mb-2 sm:mb-3 text-people-400" size={24} />
+              <div className="text-lg sm:text-2xl font-bold text-people-300">{stats.totalVotes.toLocaleString()}</div>
+              <div className="text-xs sm:text-sm text-corruption-300">Votes Cast</div>
             </motion.div>
             
             <motion.div

@@ -40,11 +40,19 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-corruption-800 border-b border-corruption-700 sticky top-8 z-40">
+    <nav 
+      className="bg-corruption-800 border-b border-corruption-700 sticky top-8 z-40"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link 
+            href="/" 
+            className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-truth-400 focus:ring-offset-2 focus:ring-offset-corruption-800 rounded-lg p-1"
+            aria-label="Stavanger Twin - Digital Democracy Revolution"
+          >
             <div className="w-8 h-8 bg-gradient-to-br from-truth-400 to-people-400 rounded-full flex items-center justify-center">
               <Shield className="w-5 h-5 text-white" />
             </div>
