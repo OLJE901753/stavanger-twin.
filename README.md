@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Stavanger Twin - Digital Democracy Revolution
 
 > **For the honor, not the glory—by the people, for the people.**
@@ -243,3 +244,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Remember**: *"We fight for the people, not the system. For the honor, not the glory—by the people, for the people."*
 
 Built with ❤️ and rebellion in Norway.
+=======
+# stavanger-twin.
+>>>>>>> 4cd701726a93d91267123308c344e5ce9d7dfe3e
