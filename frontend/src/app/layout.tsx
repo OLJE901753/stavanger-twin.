@@ -5,6 +5,7 @@ import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import Navigation from "@/components/Navigation";
 import GDPRConsentBanner from "@/components/GDPRConsentBanner";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Anti-establishment fonts for the people
 const inter = Inter({
@@ -102,6 +103,9 @@ export default function RootLayout({
 
         {/* GDPR Consent Banner */}
         <GDPRConsentBanner />
+        
+        {/* Vercel Speed Insights - Track performance for the people */}
+        <SpeedInsights />
       </body>
     </html>
   );
