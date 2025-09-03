@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { AlertTriangle, Shield, Clock, ExternalLink, TrendingUp, Users } from 'lucide-react';
 
-interface CorruptionAlertProps {
+interface CityUpdateProps {
   title: string;
   description: string;
   severity: 'low' | 'medium' | 'high' | 'critical';
@@ -13,7 +13,7 @@ interface CorruptionAlertProps {
   category?: 'budget' | 'policy' | 'contract' | 'transparency' | 'election';
 }
 
-export default function CorruptionAlert({
+export default function CityUpdate({
   title,
   description,
   severity,
@@ -21,7 +21,7 @@ export default function CorruptionAlert({
   votes = 0,
   verified = true,
   category = 'transparency'
-}: CorruptionAlertProps) {
+}: CityUpdateProps) {
   
   const getSeverityColor = () => {
     switch (severity) {
@@ -35,35 +35,35 @@ export default function CorruptionAlert({
         };
       case 'high':
         return {
-          bg: 'bg-rebel-500/20',
-          border: 'border-rebel-500',
-          text: 'text-rebel-300',
-          icon: 'text-rebel-400',
-          badge: 'bg-rebel-500/30 text-rebel-300'
+          bg: 'bg-orange-500/20',
+          border: 'border-orange-500',
+          text: 'text-orange-700',
+          icon: 'text-orange-600',
+          badge: 'bg-orange-500/30 text-orange-700'
         };
       case 'medium':
         return {
-          bg: 'bg-f59e0b/20',
-          border: 'border-f59e0b',
-          text: 'text-f59e0b',
-          icon: 'text-f59e0b',
-          badge: 'bg-f59e0b/30 text-f59e0b'
+          bg: 'bg-yellow-500/20',
+          border: 'border-yellow-500',
+          text: 'text-yellow-700',
+          icon: 'text-yellow-600',
+          badge: 'bg-yellow-500/30 text-yellow-700'
         };
       case 'low':
         return {
-          bg: 'bg-corruption-500/20',
-          border: 'border-corruption-500',
-          text: 'text-corruption-300',
-          icon: 'text-corruption-400',
-          badge: 'bg-corruption-500/30 text-corruption-300'
+          bg: 'bg-green-500/20',
+          border: 'border-green-500',
+          text: 'text-green-700',
+          icon: 'text-green-600',
+          badge: 'bg-green-500/30 text-green-700'
         };
       default:
         return {
-          bg: 'bg-corruption-500/20',
-          border: 'border-corruption-500',
-          text: 'text-corruption-300',
-          icon: 'text-corruption-400',
-          badge: 'bg-corruption-500/30 text-corruption-300'
+          bg: 'bg-gray-500/20',
+          border: 'border-gray-500',
+          text: 'text-gray-700',
+          icon: 'text-gray-600',
+          badge: 'bg-gray-500/30 text-gray-700'
         };
     }
   };
@@ -116,47 +116,47 @@ export default function CorruptionAlert({
           </div>
         </div>
         
-        <button className="text-corruption-400 hover:text-white transition-colors">
+        <button className="text-gray-400 hover:text-gray-600 transition-colors">
           <ExternalLink className="w-4 h-4" />
         </button>
       </div>
 
       {/* Description */}
-      <p className="text-sm text-corruption-300 mb-4 leading-relaxed">
+      <p className="text-sm text-gray-600 mb-4 leading-relaxed">
         {description}
       </p>
 
       {/* Footer */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-xs text-corruption-400">
+        <div className="flex items-center gap-2 text-xs text-gray-500">
           <Clock className="w-3 h-3" />
           <span>{timestamp}</span>
         </div>
         
         {votes > 0 && (
-          <div className="flex items-center gap-1 text-xs text-people-400">
+          <div className="flex items-center gap-1 text-xs text-blue-600">
             <Users className="w-3 h-3" />
-            <span>{votes.toLocaleString()} votes</span>
+            <span>{votes.toLocaleString()} participants</span>
           </div>
         )}
       </div>
 
       {/* Action buttons */}
       <div className="mt-4 flex gap-2">
-        <button className="flex-1 bg-rebel-500 hover:bg-rebel-600 text-white px-3 py-2 rounded text-xs font-medium transition-colors">
-          Report Corruption
+        <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-xs font-medium transition-colors">
+          Learn More
         </button>
-        <button className="flex-1 bg-truth-500 hover:bg-truth-600 text-white px-3 py-2 rounded text-xs font-medium transition-colors">
-          View Evidence
+        <button className="flex-1 bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-medium transition-colors">
+          Participate
         </button>
       </div>
 
-      {/* Blockchain verification indicator */}
+      {/* Verification indicator */}
       {verified && (
-        <div className="mt-3 pt-3 border-t border-corruption-600">
-          <div className="flex items-center gap-2 text-xs text-truth-400">
-            <div className="w-2 h-2 bg-truth-400 rounded-full animate-pulse"></div>
-            <span>Blockchain verified on Polygon</span>
+        <div className="mt-3 pt-3 border-t border-gray-200">
+          <div className="flex items-center gap-2 text-xs text-green-600">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span>Verified by city officials</span>
           </div>
         </div>
       )}

@@ -1,96 +1,96 @@
 @import "tailwindcss";
 
-/* Norway AS Twin - Anti-Establishment Dark Theme */
-/* For the honor, not the glory - by the people, for the people */
+/* Stavanger Twin - Professional Digital Platform */
+/* Empowering citizens through transparent, data-driven governance */
 
 :root {
-  /* Light mode (for bureaucrats who can't handle the truth) */
+  /* Light mode - Professional theme */
   --background: #ffffff;
   --foreground: #171717;
-  --rebel-accent: #ef4444;
-  --corruption-shadow: #1e293b;
-  --truth-highlight: #0ea5e9;
-  --people-power: #22c55e;
+  --primary-accent: #2563eb;
+  --secondary-accent: #059669;
+  --warning-accent: #d97706;
+  --danger-accent: #dc2626;
 }
 
 .dark {
-  /* Dark mode (for the people who see through the lies) */
+  /* Dark mode - Professional theme */
   --background: #0a0a0a;
   --foreground: #ededed;
-  --rebel-accent: #ef4444;
-  --corruption-shadow: #1e293b;
-  --truth-highlight: #0ea5e9;
-  --people-power: #22c55e;
+  --primary-accent: #3b82f6;
+  --secondary-accent: #10b981;
+  --warning-accent: #f59e0b;
+  --danger-accent: #ef4444;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-rebel: var(--rebel-accent);
-  --color-corruption: var(--corruption-shadow);
-  --color-truth: var(--truth-highlight);
-  --color-people: var(--people-power);
+  --color-primary: var(--primary-accent);
+  --color-secondary: var(--secondary-accent);
+  --color-warning: var(--warning-accent);
+  --color-danger: var(--danger-accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Anti-establishment scrollbar styling */
+/* Professional scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--corruption-shadow);
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--rebel-accent);
+  background: var(--primary-accent);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #dc2626;
+  background: #1d4ed8;
 }
 
-/* Corruption pattern background for special elements */
-.corruption-bg {
+/* Professional pattern background for special elements */
+.pattern-bg {
   background-image: 
-    linear-gradient(45deg, var(--corruption-shadow) 25%, transparent 25%), 
-    linear-gradient(-45deg, var(--corruption-shadow) 25%, transparent 25%), 
-    linear-gradient(45deg, transparent 75%, var(--corruption-shadow) 75%), 
-    linear-gradient(-45deg, transparent 75%, var(--corruption-shadow) 75%);
+    linear-gradient(45deg, #f1f5f9 25%, transparent 25%), 
+    linear-gradient(-45deg, #f1f5f9 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #f1f5f9 75%), 
+    linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
   background-size: 20px 20px;
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
-/* People's power glow effect */
-.people-glow {
-  box-shadow: 0 0 20px var(--people-power);
+/* Professional glow effect */
+.card-glow {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.1);
   transition: box-shadow 0.3s ease;
 }
 
-.people-glow:hover {
-  box-shadow: 0 0 30px var(--people-power);
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
 }
 
-/* Truth reveal animation */
-@keyframes truth-reveal {
+/* Professional reveal animation */
+@keyframes fade-in-up {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-.truth-reveal {
-  animation: truth-reveal 0.6s ease-out;
+.fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
 }
 
-/* Rebel pulse for urgent actions */
-@keyframes rebel-pulse {
+/* Professional pulse for important actions */
+@keyframes pulse-glow {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
 
-.rebel-pulse {
-  animation: rebel-pulse 2s infinite;
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
 }
 
 body {

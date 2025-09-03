@@ -179,7 +179,7 @@ export default function VotePage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight"
           >
-            <span className="text-rebel-500">PEOPLE'S</span>{' '}
+            <span className="text-rebel-500">PEOPLE&apos;S</span>{' '}
             <span className="text-truth-400">VOTE</span>
           </motion.h1>
           <p className="text-lg sm:text-xl text-corruption-300 max-w-3xl mx-auto px-4">
@@ -408,7 +408,7 @@ export default function VotePage() {
                     </h4>
                     <p className="text-sm text-corruption-300 mb-4">
                       Your vote has been recorded on the blockchain and is immutable. 
-                      <span className="text-rebel-400 font-semibold">The establishment can't ignore this!</span>
+                      <span className="text-rebel-400 font-semibold">The establishment can&apos;t ignore this!</span>
                     </p>
                     <div className="bg-corruption-700 rounded-lg p-3 text-xs text-corruption-400">
                       <div className="flex items-center gap-2 mb-1">

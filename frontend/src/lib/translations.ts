@@ -199,7 +199,6 @@ export interface Translations {
     reportCorruption: string;
     availableActions: string;
     castVote: string;
-    reportCorruption: string;
     viewDossiers: string;
     syncStatus: string;
     pendingVotes: string;
@@ -394,7 +393,6 @@ export const translations: Record<Language, Translations> = {
       reportCorruption: 'Report Corruption',
       availableActions: 'Available Offline Actions',
       castVote: 'Cast Vote',
-      reportCorruption: 'Report Corruption',
       viewDossiers: 'View Dossiers',
       syncStatus: 'Sync Status',
       pendingVotes: 'Pending Votes',
@@ -594,7 +592,6 @@ export const translations: Record<Language, Translations> = {
       reportCorruption: 'Rapportera Korruption',
       availableActions: 'Tillgängliga Offlineåtgärder',
       castVote: 'Rösta',
-      reportCorruption: 'Rapportera Korruption',
       viewDossiers: 'Visa Dossierer',
       syncStatus: 'Synkroniseringsstatus',
       pendingVotes: 'Väntande Röster',
@@ -794,7 +791,6 @@ export const translations: Record<Language, Translations> = {
       reportCorruption: 'Rapporter Korrupsjon',
       availableActions: 'Tilgjengelige Offlinehandlinger',
       castVote: 'Stem',
-      reportCorruption: 'Rapporter Korrupsjon',
       viewDossiers: 'Vis Dossierer',
       syncStatus: 'Synkroniseringsstatus',
       pendingVotes: 'Ventende Stemmer',

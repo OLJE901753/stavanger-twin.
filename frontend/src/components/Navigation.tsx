@@ -41,7 +41,7 @@ export default function Navigation() {
 
   return (
     <nav 
-      className="bg-corruption-800 border-b border-corruption-700 sticky top-8 z-40"
+      className="bg-white border-b border-gray-200 sticky top-8 z-40 shadow-sm"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -50,13 +50,13 @@ export default function Navigation() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-truth-400 focus:ring-offset-2 focus:ring-offset-corruption-800 rounded-lg p-1"
-            aria-label="Stavanger Twin - Digital Democracy Revolution"
+            className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-800 rounded-lg p-1"
+            aria-label="Stavanger Twin - Smart City Digital Platform"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-truth-400 to-people-400 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-green-600 rounded-full flex items-center justify-center">
               <Shield className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-truth-400">
+            <span className="text-xl font-bold text-blue-600">
               Stavanger Twin
             </span>
           </Link>
@@ -71,8 +71,8 @@ export default function Navigation() {
                   href={item.href}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     isActive(item.href)
-                      ? 'bg-truth-500 text-white'
-                      : 'text-corruption-300 hover:text-white hover:bg-corruption-700'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -89,7 +89,7 @@ export default function Navigation() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-corruption-300 hover:text-white hover:bg-corruption-700 rounded-lg transition-colors"
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
             >
               {isMobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -107,7 +107,7 @@ export default function Navigation() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-corruption-700 py-4"
+              className="md:hidden border-t border-gray-200 py-4"
             >
             <div className="space-y-2">
               {navigationItems.map((item) => {
@@ -119,8 +119,8 @@ export default function Navigation() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                       isActive(item.href)
-                        ? 'bg-truth-500 text-white'
-                        : 'text-corruption-300 hover:text-white hover:bg-corruption-700'
+                        ? 'bg-blue-600 text-white'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                     }`}
                   >
                     <Icon className="w-5 h-5" />

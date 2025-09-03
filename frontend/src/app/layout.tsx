@@ -23,21 +23,21 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stavanger Twin - Digital Democracy Revolution",
-  description: "Empowering citizens, exposing corruption, revolutionizing democracy. For the honor, not the glory - by the people, for the people.",
-  keywords: ["democracy", "transparency", "Stavanger", "Norway", "digital twin", "citizen empowerment"],
-  authors: [{ name: "Norway AS Twin Team" }],
+  title: "Stavanger Twin - Smart City Digital Platform",
+  description: "Empowering citizens through transparent, data-driven governance. Digital twin platform for smart city services and citizen engagement.",
+  keywords: ["smart city", "digital twin", "Stavanger", "Norway", "citizen engagement", "municipal services", "transparency"],
+  authors: [{ name: "Stavanger Municipality" }],
   robots: "index, follow",
   openGraph: {
-    title: "Stavanger Twin - Digital Democracy Revolution",
-    description: "Empowering citizens, exposing corruption, revolutionizing democracy.",
+    title: "Stavanger Twin - Smart City Digital Platform",
+    description: "Empowering citizens through transparent, data-driven governance.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Stavanger Twin - Digital Democracy Revolution",
-    description: "Empowering citizens, exposing corruption, revolutionizing democracy.",
+    title: "Stavanger Twin - Smart City Digital Platform",
+    description: "Empowering citizens through transparent, data-driven governance.",
   },
 };
 
@@ -53,24 +53,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="light">
       <head>
         {/* GDPR Compliance - Minimal tracking */}
         <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#0a0a0a" />
-        {/* Anti-establishment theme for the people */}
+        <meta name="theme-color" content="#2563eb" />
+        {/* Professional digital twin theme */}
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-corruption-900 text-foreground min-h-screen flex flex-col`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-white text-gray-900 min-h-screen flex flex-col`}
       >
         <ServiceWorkerRegistration />
         
-        {/* People's Pulse Ticker - Always visible */}
-        <div className="fixed top-0 left-0 right-0 z-50 bg-rebel-500 text-white text-sm py-1 px-4 overflow-hidden">
+        {/* City Status Ticker - Always visible */}
+        <div className="fixed top-0 left-0 right-0 z-50 bg-blue-600 text-white text-sm py-1 px-4 overflow-hidden">
           <div className="animate-pulse">
-            <span className="font-bold">PEOPLE'S PULSE:</span> 82% voted NO on fees—Councilor X ignored YOU! | 
-            Transparency index: 94% | Blockchain verified: 1,247 votes | 
-            <span className="text-people-300">Join the revolution!</span>
+            <span className="font-bold">CITY STATUS:</span> 82% citizen participation in recent consultation | 
+            Transparency index: 94% | Digital votes: 1,247 | 
+            <span className="text-blue-200">Join the digital transformation!</span>
           </div>
         </div>
         
@@ -82,19 +82,19 @@ export default function RootLayout({
           </ErrorBoundary>
         </div>
         
-        {/* Footer with People's Oath */}
-        <footer className="bg-corruption-800 text-corruption-200 py-4 px-4 mt-auto">
+        {/* Footer */}
+        <footer className="bg-gray-800 text-gray-200 py-4 px-4 mt-auto">
           <div className="max-w-7xl mx-auto text-center">
             <p className="text-sm">
-              <span className="font-bold text-people-400">People's Oath:</span>
-              "We fight for the people, not the system. For the honor, not the glory."
+              <span className="font-bold text-blue-400">Stavanger Digital Twin:</span>
+              &quot;Empowering citizens through transparent, data-driven governance.&quot;
             </p>
-            <p className="text-xs mt-2 text-corruption-400">
-              © 2024 Norway AS Twin. Built with ❤️ and rebellion.
-              <a href="/transparency" className="text-truth-400 hover:text-truth-300 ml-2">
+            <p className="text-xs mt-2 text-gray-400">
+              © 2024 Stavanger Municipality. Built with ❤️ for the community.
+              <a href="/transparency" className="text-blue-400 hover:text-blue-300 ml-2">
                 View Transparency Report
               </a>
-              <a href="/privacy" className="text-truth-400 hover:text-truth-300 ml-2">
+              <a href="/privacy" className="text-blue-400 hover:text-blue-300 ml-2">
                 Privacy Policy
               </a>
             </p>
@@ -104,7 +104,7 @@ export default function RootLayout({
         {/* GDPR Consent Banner */}
         <GDPRConsentBanner />
         
-        {/* Vercel Speed Insights - Track performance for the people */}
+        {/* Vercel Speed Insights - Track performance for better user experience */}
         <SpeedInsights />
       </body>
     </html>

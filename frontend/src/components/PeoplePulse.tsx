@@ -92,34 +92,34 @@ export default function PeoplePulse() {
   };
 
   const getColor = (type: string, impact: string) => {
-    if (type === 'corruption') return 'text-rebel-400';
-    if (type === 'vote' && impact === 'high') return 'text-people-400';
-    if (type === 'transparency') return 'text-truth-400';
-    if (type === 'achievement') return 'text-people-400';
-    return 'text-corruption-300';
+    if (type === 'corruption') return 'text-red-600';
+    if (type === 'vote' && impact === 'high') return 'text-blue-600';
+    if (type === 'transparency') return 'text-green-600';
+    if (type === 'achievement') return 'text-blue-600';
+    return 'text-gray-600';
   };
 
   const getBackgroundColor = (type: string, impact: string) => {
-    if (type === 'corruption') return 'bg-rebel-500/20';
-    if (type === 'vote' && impact === 'high') return 'bg-people-500/20';
-    if (type === 'transparency') return 'bg-truth-500/20';
-    if (type === 'achievement') return 'bg-people-500/20';
-    return 'bg-corruption-500/20';
+    if (type === 'corruption') return 'bg-red-500/20';
+    if (type === 'vote' && impact === 'high') return 'bg-blue-500/20';
+    if (type === 'transparency') return 'bg-green-500/20';
+    if (type === 'achievement') return 'bg-blue-500/20';
+    return 'bg-gray-500/20';
   };
 
   const currentItem = pulseData[currentIndex];
 
   return (
-    <div className="w-full bg-corruption-800 rounded-lg p-4">
+    <div className="w-full bg-gray-100 rounded-lg p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold text-truth-400 flex items-center gap-2">
-          <div className="w-2 h-2 bg-truth-400 rounded-full animate-pulse"></div>
-          People's Pulse
-          <span className="text-xs text-corruption-400 font-normal ml-2">
-            - The establishment's worst nightmare!
+        <h3 className="text-lg font-bold text-blue-600 flex items-center gap-2">
+          <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
+          City Pulse
+          <span className="text-xs text-gray-500 font-normal ml-2">
+            - Real-time city updates
           </span>
         </h3>
-        <div className="text-xs text-corruption-400">
+        <div className="text-xs text-gray-500">
           {currentIndex + 1} of {pulseData.length}
         </div>
       </div>

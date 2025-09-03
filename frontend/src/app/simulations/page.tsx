@@ -372,110 +372,33 @@ export default function SimulationsPage() {
                 {/* Chart Container */}
                 <div className="bg-corruption-900 rounded-lg p-4 mb-6">
                   {activeChart === 'timeline' && (
-                    <Plot
-                      data={getTimelineData(selectedSimulation)}
-                      layout={{
-                        title: {
-                          text: 'Policy Timeline Analysis',
-                          font: { color: '#e2e8f0', size: 16 }
-                        },
-                        paper_bgcolor: 'rgba(0,0,0,0)',
-                        plot_bgcolor: 'rgba(0,0,0,0)',
-                        font: { color: '#e2e8f0' },
-                        xaxis: {
-                          title: 'Year',
-                          gridcolor: '#374151',
-                          color: '#e2e8f0'
-                        },
-                        yaxis: {
-                          title: 'Amount (€M)',
-                          gridcolor: '#374151',
-                          color: '#e2e8f0'
-                        },
-                        yaxis2: {
-                          title: 'Public Support (%)',
-                          overlaying: 'y',
-                          side: 'right',
-                          gridcolor: '#374151',
-                          color: '#e2e8f0'
-                        },
-                        legend: {
-                          font: { color: '#e2e8f0' }
-                        },
-                        margin: { t: 50, r: 50, b: 50, l: 50 }
-                      }}
-                      config={{
-                        displayModeBar: false,
-                        responsive: true
-                      }}
-                      style={{ width: '100%', height: '400px' }}
-                    />
+                    <div className="w-full h-96 bg-corruption-800 rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-truth-400 text-lg font-semibold mb-2">Policy Timeline Analysis</div>
+                        <div className="text-corruption-300">Chart visualization coming soon...</div>
+                        <div className="text-sm text-corruption-400 mt-2">The establishment can&apos;t hide the data forever!</div>
+                      </div>
+                    </div>
                   )}
 
                   {activeChart === 'impact' && (
-                    <Plot
-                      data={getImpactData(selectedSimulation)}
-                      layout={{
-                        title: {
-                          text: 'Multi-Dimensional Impact Analysis',
-                          font: { color: '#e2e8f0', size: 16 }
-                        },
-                        paper_bgcolor: 'rgba(0,0,0,0)',
-                        plot_bgcolor: 'rgba(0,0,0,0)',
-                        font: { color: '#e2e8f0' },
-                        polar: {
-                          radialaxis: {
-                            visible: true,
-                            range: [0, 10],
-                            gridcolor: '#374151',
-                            color: '#e2e8f0'
-                          },
-                          angularaxis: {
-                            gridcolor: '#374151',
-                            color: '#e2e8f0'
-                          }
-                        },
-                        margin: { t: 50, r: 50, b: 50, l: 50 }
-                      }}
-                      config={{
-                        displayModeBar: false,
-                        responsive: true
-                      }}
-                      style={{ width: '100%', height: '400px' }}
-                    />
+                    <div className="w-full h-96 bg-corruption-800 rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-truth-400 text-lg font-semibold mb-2">Multi-Dimensional Impact Analysis</div>
+                        <div className="text-corruption-300">Radar chart visualization coming soon...</div>
+                        <div className="text-sm text-corruption-400 mt-2">Exposing the real impact of political decisions!</div>
+                      </div>
+                    </div>
                   )}
 
                   {activeChart === 'stakeholders' && (
-                    <Plot
-                      data={getStakeholderData(selectedSimulation)}
-                      layout={{
-                        title: {
-                          text: 'Stakeholder Support vs Influence',
-                          font: { color: '#e2e8f0', size: 16 }
-                        },
-                        paper_bgcolor: 'rgba(0,0,0,0)',
-                        plot_bgcolor: 'rgba(0,0,0,0)',
-                        font: { color: '#e2e8f0' },
-                        xaxis: {
-                          title: 'Support Level (%)',
-                          gridcolor: '#374151',
-                          color: '#e2e8f0',
-                          range: [0, 100]
-                        },
-                        yaxis: {
-                          title: 'Influence Level (1-10)',
-                          gridcolor: '#374151',
-                          color: '#e2e8f0',
-                          range: [0, 10]
-                        },
-                        margin: { t: 50, r: 50, b: 50, l: 50 }
-                      }}
-                      config={{
-                        displayModeBar: false,
-                        responsive: true
-                      }}
-                      style={{ width: '100%', height: '400px' }}
-                    />
+                    <div className="w-full h-96 bg-corruption-800 rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-truth-400 text-lg font-semibold mb-2">Stakeholder Support vs Influence</div>
+                        <div className="text-corruption-300">Scatter plot visualization coming soon...</div>
+                        <div className="text-sm text-corruption-400 mt-2">Mapping who really pulls the strings!</div>
+                      </div>
+                    </div>
                   )}
                 </div>
 

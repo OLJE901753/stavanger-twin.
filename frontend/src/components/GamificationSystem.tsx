@@ -185,20 +185,20 @@ export default function GamificationSystem() {
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
-      case 'common': return 'text-corruption-300 bg-corruption-500/20';
-      case 'rare': return 'text-truth-400 bg-truth-500/20';
-      case 'epic': return 'text-people-400 bg-people-500/20';
-      case 'legendary': return 'text-rebel-400 bg-rebel-400/20';
-      default: return 'text-corruption-300 bg-corruption-500/20';
+      case 'common': return 'text-gray-600 bg-gray-500/20';
+      case 'rare': return 'text-green-600 bg-green-500/20';
+      case 'epic': return 'text-blue-600 bg-blue-500/20';
+      case 'legendary': return 'text-purple-600 bg-purple-500/20';
+      default: return 'text-gray-600 bg-gray-500/20';
     }
   };
 
   const getRarityGlow = (rarity: string) => {
     switch (rarity) {
       case 'common': return '';
-      case 'rare': return 'shadow-truth';
-      case 'epic': return 'shadow-people';
-      case 'legendary': return 'shadow-rebel animate-pulse';
+      case 'rare': return 'shadow-green';
+      case 'epic': return 'shadow-blue';
+      case 'legendary': return 'shadow-purple animate-pulse';
       default: return '';
     }
   };
@@ -215,19 +215,19 @@ export default function GamificationSystem() {
   };
 
   const getRankColor = (level: number) => {
-    if (level >= 50) return 'text-rebel-400';
-    if (level >= 25) return 'text-people-400';
-    if (level >= 10) return 'text-truth-400';
-    return 'text-corruption-400';
+    if (level >= 50) return 'text-purple-600';
+    if (level >= 25) return 'text-blue-600';
+    if (level >= 10) return 'text-green-600';
+    return 'text-gray-600';
   };
 
   const getRankTitle = (level: number) => {
-    if (level >= 50) return 'Democracy Legend';
-    if (level >= 25) return 'People\'s Hero';
-    if (level >= 15) return 'Truth Warrior';
-    if (level >= 10) return 'Active Citizen';
-    if (level >= 5) return 'Engaged Voter';
-    return 'New Citizen';
+    if (level >= 50) return 'City Champion';
+    if (level >= 25) return 'Community Leader';
+    if (level >= 15) return 'Active Participant';
+    if (level >= 10) return 'Engaged Citizen';
+    if (level >= 5) return 'Regular Voter';
+    return 'New Member';
   };
 
   const filteredBadges = availableBadges.filter(badge => {
